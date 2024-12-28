@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_allexercise">
+
+    <fragment
+        android:id="@+id/nav_allexercise"
+        android:name="com.example.fitnesk.ui.chosenexercise.AllExercise"
+        android:label="@string/menu_allexercise"
+        tools:layout="@layout/fragment_all_exercise" >
+        <action
+            android:id="@+id/action_nav_allexercise_to_nav_chosenexercise"
+            app:destination="@id/nav_chosenexercise" >
+            <argument
+                android:name="chosen exercise"
+                android:defaultValue="chosen exercise" />
+            <argument
+                android:name="muscleGroup"
+                android:defaultValue="muscleGroup" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_chosenexercise"
+        android:name="com.example.fitnesk.ui.chosenexercise.ChosenExerciseFragment"
+        android:label="@string/menu_chosenexercise"
+        tools:layout="@layout/fragment_chosen_exercise" >
+        <argument
+            android:name="chosen exercise"
+            app:argType="string"
+            android:defaultValue="chosen exercise" />
+        <argument
+            android:name="muscleGroup"
+            app:argType="string"
+            android:defaultValue="muscleGroup" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_favoriteexercise"
+        android:name="com.example.fitnesk.ui.favoriteexercise.FavoriteExerciseFragment"
+        android:label="@string/menu_favoriteexercise"
+        tools:layout="@layout/fragment_favorite_exercise" >
+        <action
+            android:id="@+id/action_nav_favoriteexercise_to_nav_chosenexercise"
+            app:destination="@id/nav_chosenexercise" >
+            <argument
+                android:name="chosen exercise"
+                android:defaultValue="chosen exercise" />
+            <argument
+                android:name="muscleGroup"
+                android:defaultValue="muscleGroup" />
+        </action>
+    </fragment>
+</navigation>
