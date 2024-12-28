@@ -200,9 +200,4 @@
         <item>300</item>
         <item>150</item>
     </string-array>
-    <string name="title_activity_main6">MainActivity6</string>
-
-    <string name="menu_alldish">AllDish</string>
-    <string name="menu_chosendish">ChosenDish</string>
-    <string name="menu_favoritedish">FavoriteDish</string>
 </resources>

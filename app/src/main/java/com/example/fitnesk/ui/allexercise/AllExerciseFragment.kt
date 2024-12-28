@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesk.AppIni
@@ -14,7 +12,7 @@ import com.example.fitnesk.MyRecyclerViewAdapter
 import com.example.fitnesk.R
 import com.example.fitnesk.databinding.FragmentAllExerciseBinding
 
-class AllExercise : Fragment() {
+class AllExerciseFragment : Fragment() {
     private var binding: FragmentAllExerciseBinding? = null
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mLayoutManager: RecyclerView.LayoutManager

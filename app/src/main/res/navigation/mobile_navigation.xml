@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_allexercise"
-        android:name="com.example.fitnesk.ui.chosenexercise.AllExercise"
+        android:name="com.example.fitnesk.ui.allexercise.AllExerciseFragment"
         android:label="@string/menu_allexercise"
         tools:layout="@layout/fragment_all_exercise" >
         <action
