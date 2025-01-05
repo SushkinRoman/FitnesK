@@ -23,8 +23,6 @@ interface ExerciseDao {
     // Функция для получения всех упражнений по группе мышц
     @Query("SELECT * FROM exercises WHERE muscleGroup = :muscleGroup")
     fun getExercisesByMuscleGroup(muscleGroup: String): List<Exercise>
-    // Функция для удаления упражнения по ID
-    @Query("DELETE FROM exercises WHERE exerciseId = :exerciseId")
-    fun deleteExerciseById(exerciseId: Long) // Удаляем упражнение по ID
+
 
 }

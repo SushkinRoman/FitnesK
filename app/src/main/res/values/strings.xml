@@ -3,14 +3,14 @@
     <string name="title_activity_main2">MainActivity2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">FitnesAPP</string>
+    <string name="nav_header_subtitle">fitnes@app.ru</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_allexercise">AllExercise</string>
-    <string name="menu_chosenexercise">ChosenExercise</string>
-    <string name="menu_favoriteexercise">FavoriteExercise</string>
+    <string name="menu_allexercise">Список упражнений</string>
+    <string name="menu_chosenexercise">Выбранное упражнение</string>
+    <string name="menu_favoriteexercise">Сохраненные упражнения</string>
     <string name="title_activity_main_upr4">MainActivityUpr4</string>
 
 

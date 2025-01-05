@@ -12,9 +12,6 @@ import com.example.fitnesk.databinding.FragmentFavoriteExerciseBinding
 class FavoriteExerciseFragment : Fragment() {
 
     private var _binding: FragmentFavoriteExerciseBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,6 +29,12 @@ class FavoriteExerciseFragment : Fragment() {
         slideshowViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        // Обработчик нажатия на ImageButton
+        binding.imageButton4.setOnClickListener {
+            requireActivity().finish() // Завершает текущую активность и возвращает на MainActivity3
+        }
+
         return root
     }
 

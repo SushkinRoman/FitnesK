@@ -35,6 +35,11 @@ class AllExerciseFragment : Fragment() {
         val weathers = weatherDao.getAllExercises().sortedBy { it.name.lowercase() }
         val mAdapter = MyRecyclerViewAdapter(weathers, requireActivity())
         mRecyclerView.adapter = mAdapter
+
+        // Обработчик нажатия на ImageButton
+        binding?.imageButton2?.setOnClickListener {
+            requireActivity().finish() // Завершает текущую активность и возвращает на MainActivity3
+        }
     }
 
     override fun onDestroyView() {
