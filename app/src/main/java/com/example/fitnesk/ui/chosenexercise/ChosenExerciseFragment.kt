@@ -36,6 +36,11 @@ class ChosenExerciseFragment : Fragment() {
         binding.textWind.text = "Часть тела: $bodyPart"
         binding.textCond.text = "Калории: $calories"
 
+        // Обработчик нажатия на ImageButton
+        binding.imageButton3.setOnClickListener {
+            requireActivity().finish() // Завершает текущую активность и возвращает на MainActivity3
+        }
+
         return root
     }
 

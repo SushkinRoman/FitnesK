@@ -1,11 +1,9 @@
-// MainActivity5.kt
 package com.example.fitnesk
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -32,9 +30,19 @@ class MainActivity5 : AppCompatActivity() {
 
         // Обработчик нажатия на кнопку "Рассчитать"
         calculateButton.setOnClickListener {
+            // Сбрасываем стили ошибок
+            resetErrorStyles(weightStartEditText, weightEndEditText, heightEditText, ageEditText)
+
             // Проверяем, что все поля заполнены
             if (weightStartEditText.text.isEmpty() || weightEndEditText.text.isEmpty() || heightEditText.text.isEmpty() || ageEditText.text.isEmpty()) {
                 Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Проверяем, что введены только цифры
+            if (!isNumeric(weightStartEditText.text.toString()) || !isNumeric(weightEndEditText.text.toString()) ||
+                !isNumeric(heightEditText.text.toString()) || !isNumeric(ageEditText.text.toString())) {
+                showError("Ошибка: Введите в поля только цифры.", resultTextView)
                 return@setOnClickListener
             }
 
@@ -43,6 +51,13 @@ class MainActivity5 : AppCompatActivity() {
             val weightEnd = weightEndEditText.text.toString().toFloat()
             val height = heightEditText.text.toString().toInt()
             val age = ageEditText.text.toString().toInt()
+
+            // Проверяем ограничения
+            val errorMessage = validateInputs(weightStart, weightEnd, height, age, weightStartEditText, weightEndEditText, heightEditText, ageEditText)
+            if (errorMessage != null) {
+                showError(errorMessage, resultTextView)
+                return@setOnClickListener
+            }
 
             // Рассчитываем количество калорий в день
             val bmr = calculateBMR(gender, weightStart, height, age)
@@ -53,7 +68,7 @@ class MainActivity5 : AppCompatActivity() {
             resultTextView.text = "БМП: $bmr калорий/день\n" +
                     "Для достижения конечного веса потребуется: $daysToLoseWeight дней\n" +
                     "Безопасно терять до 1100 калорий в день."
-            resultTextView.setTextColor(resources.getColor(R.color.black))
+            resultTextView.setTextColor(Color.BLACK)
         }
 
         // Обработчик нажатия на кнопку "Назад"
@@ -68,6 +83,50 @@ class MainActivity5 : AppCompatActivity() {
             66 + (6.23 * weight) + (12.7 * height) - (6.8 * age)
         } else {
             655 + (4.35 * weight) + (4.7 * height) - (4.7 * age)
+        }
+    }
+
+    // Функция для проверки, является ли строка числом
+    private fun isNumeric(str: String): Boolean {
+        return str.all { it.isDigit() }
+    }
+
+    // Функция для валидации введенных данных
+    private fun validateInputs(weightStart: Float, weightEnd: Float, height: Int, age: Int,
+                               weightStartEditText: EditText, weightEndEditText: EditText,
+                               heightEditText: EditText, ageEditText: EditText): String? {
+        return when {
+            age < 10 || age > 150 -> {
+                ageEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Возраст должен быть от 10 до 150 лет."
+            }
+            height < 120 || height > 300 -> {
+                heightEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Рост должен быть от 120 см до 300 см."
+            }
+            weightStart < 40 || weightStart > 300 -> {
+                weightStartEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Начальный вес должен быть от 40 до 300 кг."
+            }
+            weightEnd < 40 || weightEnd > weightStart -> {
+                weightStartEditText.setBackgroundColor(Color.RED)
+                weightEndEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Начальный вес не может быть меньше конечного веса."
+            }
+            else -> null // Все проверки пройдены
+        }
+    }
+
+    // Функция для отображения ошибки
+    private fun showError(message: String, resultTextView: TextView) {
+        resultTextView.text = message
+        resultTextView.setTextColor(Color.RED)
+    }
+
+    // Сброс стилей ошибок
+    private fun resetErrorStyles(vararg editTexts: EditText) {
+        for (editText in editTexts) {
+            editText.setBackgroundColor(Color.WHITE)
         }
     }
 }
