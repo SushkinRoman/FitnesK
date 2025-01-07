@@ -29,10 +29,7 @@
         android:layout_width="268dp"
         android:layout_height="63dp"
         android:text="Группа мышц:"
-<<<<<<< HEAD
         android:textSize="24sp"
-=======
->>>>>>> 07160859e867a4826600e15757cba0d83364b78d
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,10 +44,7 @@
         android:layout_width="277dp"
         android:layout_height="55dp"
         android:text="Целевые мышцы"
-<<<<<<< HEAD
         android:textSize="24sp"
-=======
->>>>>>> 07160859e867a4826600e15757cba0d83364b78d
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,10 +58,7 @@
         android:layout_width="276dp"
         android:layout_height="57dp"
         android:text="Часть тела"
-<<<<<<< HEAD
         android:textSize="24sp"
-=======
->>>>>>> 07160859e867a4826600e15757cba0d83364b78d
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,10 +72,7 @@
         android:layout_width="279dp"
         android:layout_height="56dp"
         android:text="Калории"
-<<<<<<< HEAD
         android:textSize="24sp"
-=======
->>>>>>> 07160859e867a4826600e15757cba0d83364b78d
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

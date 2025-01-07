@@ -279,4 +279,5 @@ class ExampleInstrumentedTest {
             assertEquals(expectedBMR, actualBMR, 0.01)
         }
     }
+
 }
