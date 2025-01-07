@@ -92,6 +92,7 @@ class MainActivity5 : AppCompatActivity() {
     }
 
     // Функция для валидации введенных данных
+<<<<<<< HEAD
     fun validateInputs(weightStart: Float, weightEnd: Float, height: Int, age: Int,
                        weightStartEditText: EditText, weightEndEditText: EditText,
                        heightEditText: EditText, ageEditText: EditText): String? {
@@ -123,6 +124,33 @@ class MainActivity5 : AppCompatActivity() {
         // Если все проверки пройдены, возвращаем null
         return null
     }
+=======
+    private fun validateInputs(weightStart: Float, weightEnd: Float, height: Int, age: Int,
+                               weightStartEditText: EditText, weightEndEditText: EditText,
+                               heightEditText: EditText, ageEditText: EditText): String? {
+        return when {
+            age < 10 || age > 150 -> {
+                ageEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Возраст должен быть от 10 до 150 лет."
+            }
+            height < 120 || height > 300 -> {
+                heightEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Рост должен быть от 120 см до 300 см."
+            }
+            weightStart < 40 || weightStart > 300 -> {
+                weightStartEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Начальный вес должен быть от 40 до 300 кг."
+            }
+            weightEnd < 40 || weightEnd > weightStart -> {
+                weightStartEditText.setBackgroundColor(Color.RED)
+                weightEndEditText.setBackgroundColor(Color.RED)
+                "Ошибка: Начальный вес не может быть меньше конечного веса."
+            }
+            else -> null // Все проверки пройдены
+        }
+    }
+
+>>>>>>> 07160859e867a4826600e15757cba0d83364b78d
     // Функция для отображения ошибки
     private fun showError(message: String, resultTextView: TextView) {
         resultTextView.text = message
