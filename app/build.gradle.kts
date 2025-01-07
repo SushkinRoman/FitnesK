@@ -54,9 +54,11 @@ dependencies {
 
     // Зависимости для Room
     implementation("androidx.room:room-runtime:2.3.0")
+    implementation(libs.androidx.monitor)
     kapt("androidx.room:room-compiler:2.3.0") // Используйте kapt для Kotlin
     implementation("androidx.room:room-ktx:2.3.0")
-
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     // Тестовые зависимости
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

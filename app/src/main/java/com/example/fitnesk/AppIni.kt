@@ -1,4 +1,5 @@
 package com.example.fitnesk
+
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
@@ -8,6 +9,7 @@ import com.example.fitnesk.bd.Exercise
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 class AppIni : Application() {
     companion object {
         lateinit var instance: AppIni
@@ -16,7 +18,6 @@ class AppIni : Application() {
         fun getAppInstance(): AppIni {
             return instance
         }
-
     }
 
     private lateinit var database: AppDatabase
@@ -24,22 +25,25 @@ class AppIni : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+
+        // Удаляем предыдущую базу данных, если она существует
+        deleteDatabase("database")
+
+        // Инициализируем базу данных
         database = Room.databaseBuilder(this, AppDatabase::class.java, "database")
             .allowMainThreadQueries()
             .build()
 
-        // Initialize database with users and weather
+        // Инициализация базы данных с упражнениями
         initializeDatabase()
-
     }
 
     fun getDatabase(): AppDatabase {
         return database
     }
+
     private fun initializeDatabase() {
-        database.exerciseDao().deleteAllExercises()
         CoroutineScope(Dispatchers.IO).launch {
-            database.exerciseDao().deleteAllExercises()
             // Получаем ресурсы приложения
             val resources: Resources = resources
 
@@ -73,7 +77,6 @@ class AppIni : Application() {
             } else {
                 Log.d("Database", "No exercises found in resources.")
             }
-
         }
     }
 }
